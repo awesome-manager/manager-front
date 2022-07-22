@@ -83,17 +83,23 @@
     <sidebar-share :background-color.sync="sidebarBackground"> </sidebar-share>
     <div class="main-panel" :data="sidebarBackground">
       <dashboard-navbar></dashboard-navbar>
+      <router-view name="header"></router-view>
+
       <div
         :class="{ content: !isFullScreenRoute }"
         @click="toggleSidebar"
       >
-        zxc
+        <zoom-center-transition :duration="200" mode="out-in">
+          <!-- your content here -->
+          <slot></slot>
+        </zoom-center-transition>
       </div>
     </div>
   </div>
 </template>
 <script>
 import { mapState, mapMutations } from 'vuex';
+import { SlideYDownTransition, ZoomCenterTransition } from 'vue2-transitions';
 
 import Sidebar from "@/components/layout/sidebar";
 import SidebarItem from "@/components/layout/sidebar/item";
@@ -122,6 +128,8 @@ export default {
     },
   },
   components: {
+    SlideYDownTransition,
+    ZoomCenterTransition,
     DashboardNavbar,
     Notifications,
     SidebarShare,

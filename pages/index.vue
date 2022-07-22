@@ -1,6 +1,6 @@
 <template>
   <div>
-    zxc
+    Content
   </div>
 </template>
 
