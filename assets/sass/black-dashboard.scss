@@ -1,0 +1,114 @@
+/*!
+
+ =========================================================
+ * Nuxt Black Dashboard - v1.0.0
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/nuxt-black-dashboard-pro
+ * Copyright 2020 Creative Tim (https://www.creative-tim.com)
+
+ * Coded by Creative Tim
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ */
+
+ // Core
+
+@import "dashboard/custom/functions";
+@import "~bootstrap/scss/functions";
+
+@import "dashboard/custom/variables";
+@import "~bootstrap/scss/variables";
+
+@import "dashboard/custom/mixins";
+@import "~bootstrap/scss/mixins";
+
+ // Bootstrap components
+
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+
+ // Custom components
+
+ @import "dashboard/custom/reboot";
+ @import "dashboard/custom/utilities";
+ @import "dashboard/custom/alerts";
+ @import "dashboard/custom/badge";
+ @import "dashboard/custom/buttons";
+ @import "dashboard/custom/dropdown";
+ @import "dashboard/custom/footer";
+ @import "dashboard/custom/forms";
+ @import "dashboard/custom/grid";
+ @import "dashboard/custom/icons";
+ @import "dashboard/custom/images";
+ @import "dashboard/custom/input-group";
+ @import "dashboard/custom/modal";
+ @import "dashboard/custom/nav";
+ @import "dashboard/custom/navbar";
+ @import "dashboard/custom/popover";
+ @import "dashboard/custom/progress";
+ @import "dashboard/custom/type";
+ @import "dashboard/custom/tables";
+ @import "dashboard/custom/checkboxes-radio";
+ @import "dashboard/custom/fixed-plugin";
+ @import "dashboard/custom/sidebar-and-main-panel";
+ @import "dashboard/custom/misc";
+ @import "dashboard/custom/rtl";
+
+ // Vendor / Plugins
+
+@import "dashboard/custom/vendor/plugin-bootstrap-switch";
+@import "dashboard/custom/vendor/plugin-perfect-scrollbar";
+
+// Vendor Element UI plugins
+@import "dashboard/custom/vendor/element-ui/plugin-tags";
+@import "dashboard/custom/vendor/element-ui/plugin-slider";
+@import "dashboard/custom/vendor/element-ui/plugin-select";
+@import "dashboard/custom/vendor/element-ui/plugin-inputs";
+@import "dashboard/custom/vendor/element-ui/plugin-tables";
+@import "dashboard/custom/vendor/element-ui/plugin-datepicker";
+
+// light mode
+
+@import "dashboard/custom/white-content";
+
+// Cards
+
+@import 'dashboard/custom/card';
+@import "dashboard/custom/cards/card-chart";
+@import "dashboard/custom/cards/card-map";
+@import "dashboard/custom/cards/card-user";
+@import "dashboard/custom/cards/card-profile";
+@import "dashboard/custom/cards/card-plain";
