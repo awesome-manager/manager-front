@@ -80,6 +80,7 @@
         </li>
       </template>
     </side-bar>
+    <sidebar-share :background-color.sync="sidebarBackground"> </sidebar-share>
     <div class="main-panel" :data="sidebarBackground">
       <div
         :class="{ content: !isFullScreenRoute }"
@@ -95,6 +96,7 @@ import { mapState, mapMutations } from 'vuex';
 
 import Sidebar from "@/components/layout/sidebar";
 import SidebarItem from "@/components/layout/sidebar/item";
+import SidebarShare from "~/components/layout/sidebar-share";
 import Notifications from "@/components/layout/notifications";
 
 export default {
@@ -119,6 +121,7 @@ export default {
   },
   components: {
     Notifications,
+    SidebarShare,
     SidebarItem,
     Sidebar,
   }
