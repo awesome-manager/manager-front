@@ -82,6 +82,7 @@
     </side-bar>
     <sidebar-share :background-color.sync="sidebarBackground"> </sidebar-share>
     <div class="main-panel" :data="sidebarBackground">
+      <dashboard-navbar></dashboard-navbar>
       <div
         :class="{ content: !isFullScreenRoute }"
         @click="toggleSidebar"
@@ -96,8 +97,9 @@ import { mapState, mapMutations } from 'vuex';
 
 import Sidebar from "@/components/layout/sidebar";
 import SidebarItem from "@/components/layout/sidebar/item";
-import SidebarShare from "~/components/layout/sidebar-share";
+import SidebarShare from "@/components/layout/sidebar-share";
 import Notifications from "@/components/layout/notifications";
+import DashboardNavbar from "@/components/layout/dashboard-navbar";
 
 export default {
   data() {
@@ -120,6 +122,7 @@ export default {
     },
   },
   components: {
+    DashboardNavbar,
     Notifications,
     SidebarShare,
     SidebarItem,
