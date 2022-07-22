@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper" :class="{ 'nav-open': show }">
+    <notifications></notifications>
     <div class="main-panel" :data="sidebarBackground">
       <div
         :class="{ content: !isFullScreenRoute }"
