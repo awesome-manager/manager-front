@@ -36,6 +36,8 @@ module.exports = {
     "vectorMaps": "Векторные карты",
     "widgets": "Виджеты",
     "charts": "Графики",
-    "calendar": "Календарь"
+    "calendar": "Календарь",
+    "projects": "Проекты",
+    "employees": "Сотрудники"
   }
 }
