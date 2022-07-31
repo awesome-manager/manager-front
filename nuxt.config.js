@@ -3,6 +3,10 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
+  env: {
+    api_url: process.env.API_URL
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'manager-front',
@@ -44,6 +48,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

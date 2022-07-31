@@ -1,6 +1,6 @@
 module.exports = {
   "sidebar": {
-    "title": "Креативный Тим",
+    "title": "Менеджер проектов",
     "shortTitle": "КТ",
     "dashboard": "Панель",
     "pages": "Страницы",
