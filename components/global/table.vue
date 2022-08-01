@@ -2,6 +2,7 @@
   <el-table :data="tableData">
     <el-table-column
       v-for="column in tableColumns"
+      :key="column.propertyName"
       :min-width="column.minWidth || 150"
       :sortable="column.sortable || false"
       :label="column.label"
