@@ -31,6 +31,14 @@
           }"
         >
         </sidebar-item>
+        <sidebar-item
+          :link="{
+            name: $t('sidebar.vacations'),
+            icon: 'tim-icons icon-world',
+            path: '/vacations'
+          }"
+        >
+        </sidebar-item>
       </template>
     </side-bar>
     <sidebar-share :background-color.sync="sidebarBackground"> </sidebar-share>

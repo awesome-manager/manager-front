@@ -10,6 +10,7 @@
 </template>
 <script>
 import { mapState } from 'vuex';
+
 import fetchSilence from '@/src/tools/safeRequest';
 
 export default {

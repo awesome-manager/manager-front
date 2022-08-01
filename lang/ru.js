@@ -38,6 +38,7 @@ module.exports = {
     "charts": "Графики",
     "calendar": "Календарь",
     "projects": "Проекты",
-    "employees": "Сотрудники"
+    "employees": "Сотрудники",
+    "vacations": "Отпуск"
   }
 }

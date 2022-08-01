@@ -3490,7 +3490,7 @@ d3-zoom@1:
     d3-selection "1"
     d3-transition "1"
 
-d3@^5.7.0:
+d3@^5.15.0, d3@^5.7.0:
   version "5.16.0"
   resolved "https://registry.yarnpkg.com/d3/-/d3-5.16.0.tgz#9c5e8d3b56403c79d4ed42fbd62f6113f199c877"
   integrity sha512-4PL5hHaHwX4m7Zr1UapXW23apo6pexCgdetdJ5kTmADpG/7T9Gkxw0M0tf/pjoB63ezCCm0u5UaFYy2aMt0Mcw==
@@ -9275,6 +9275,13 @@ vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
+
+vue-timeline-component@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/vue-timeline-component/-/vue-timeline-component-0.1.6.tgz#2daeae7f895c9b6d09471480764d279613b1e170"
+  integrity sha512-Qa0DLzYbmKIlWnESrE/mFIGLrncNquHK1WsfyhUsTtpvzRTMoF8u7n8cXaKyAQxgQouR1s/qbEDcciHQdVGrpg==
+  dependencies:
+    d3 "^5.15.0"
 
 vue2-transitions@^0.2.3:
   version "0.2.3"
