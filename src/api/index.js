@@ -8,6 +8,10 @@ class Api {
   getVacationsPage() {
     return request.get('/ajax/page/vacations/');
   }
+
+  getProjectsPage() {
+    return request.get('/ajax/page/projects/');
+  }
 }
 
 const api = new Api();

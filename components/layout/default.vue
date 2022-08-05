@@ -15,14 +15,14 @@
           }"
         >
         </sidebar-item>
-<!--        <sidebar-item
+        <sidebar-item
           :link="{
             name: $t('sidebar.projects'),
-            icon: 'tim-icons icon-notes',
+            icon: 'tim-icons icon-laptop',
             path: '/projects'
           }"
         >
-        </sidebar-item>-->
+        </sidebar-item>
         <sidebar-item
           :link="{
             name: $t('sidebar.employees'),
