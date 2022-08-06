@@ -12,6 +12,10 @@ class Api {
   getProjectsPage() {
     return request.get('/ajax/page/projects/');
   }
+
+  getProjectsGanttPage() {
+    return request.get('/ajax/page/projects/gantt');
+  }
 }
 
 const api = new Api();

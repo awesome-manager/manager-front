@@ -2,8 +2,22 @@
   <div class="row">
     <div class="col-lg-12">
       <g-card card-body-classes="table-full-width">
-        <h4 slot="header" class="card-title">Проекты</h4>
-        <g-table :table-data="preparedProjects" :table-columns="columns" />
+        <div slot="header" class="row">
+          <h3 class="card-title col-12">Проекты</h3>
+          <div class="mx-2">
+            <nuxt-link :to="{ name: i18nLink('projects-gantt') }">
+              <button type="button" class="btn btn-info">Гант</button>
+            </nuxt-link>
+            <nuxt-link :to="{ name: i18nLink('projects-add') }">
+              <button type="button" class="btn btn-success">Добавить проект</button>
+            </nuxt-link>
+          </div>
+        </div>
+        <g-table
+          :table-data="preparedProjects"
+          :table-columns="columns"
+          :row-class-name="rowClassName"
+        />
       </g-card>
     </div>
   </div>
@@ -13,9 +27,12 @@ import { mapState } from 'vuex';
 
 import find from 'lodash/find';
 import fetchSilence from '@/src/tools/safeRequest';
+import routerMixin from '@/src/mixins/routerMixin';
+import customersMixin from '@/src/mixins/customersMixin';
 
 export default {
-  name: 'EmployeesPage',
+  name: 'ProjectsPage',
+  mixins: [customersMixin, routerMixin],
   fetch({ store, error }) {
     return fetchSilence(store, error, 'projects/loadPage');
   },
@@ -121,10 +138,9 @@ export default {
     }
   },
   methods: {
-
+    rowClassName(row) {
+      return this.getTableClass(row.row.customer);
+    }
   }
 }
 </script>
-<style lang="scss" scoped>
-
-</style>

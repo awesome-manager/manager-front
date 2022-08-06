@@ -43,5 +43,20 @@ export const actions = {
         }
       }
     });
+  },
+  loadGantPage({ commit }) {
+    return api.getProjectsGanttPage().then(res => {
+      if (res.data.error === 0) {
+        if (res.data.content.projects !== 'undefined') {
+          commit('setProjects', res.data.content.projects);
+        }
+        if (res.data.content.statuses !== 'undefined') {
+          commit('setStatuses', res.data.content.statuses);
+        }
+        if (res.data.content.groups !== 'undefined') {
+          commit('setGroups', res.data.content.groups);
+        }
+      }
+    });
   }
 }
