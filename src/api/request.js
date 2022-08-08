@@ -21,8 +21,6 @@ class Request {
   }
 
   get(path, data = {}, headers = {}) {
-    console.log(this.buildUrl(path));
-
     return this.client.get(this.buildUrl(path), {
       params: data,
       headers: headers

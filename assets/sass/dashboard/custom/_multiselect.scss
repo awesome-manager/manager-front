@@ -1,0 +1,64 @@
+@import 'vue-multiselect/dist/vue-multiselect.min.css';
+
+.multiselect {
+  > .multiselect__tags {
+    border-color: lighten($black,5%);
+    border-radius: $border-radius-lg;
+    @include transition-input-focus-color();
+    background-color: rgba(255, 255, 255, 0);
+
+    > .multiselect__single {
+      font-size: $font-size-sm;
+      background-color: rgba(255, 255, 255, 0);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    > .multiselect__input {
+      font-size: $font-size-sm;
+      background-color: rgba(255, 255, 255, 0);
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  > .multiselect__content-wrapper {
+    border-color: $primary;
+    background-color: $purple;
+
+    > ul.multiselect__content  {
+      > li.multiselect__element {
+        > span.multiselect__option {
+          font-size: $font-size-sm;
+          &::after {
+            font-size: inherit;
+          }
+
+          &.multiselect__option--selected {
+            background-color: $green;
+
+            &::after {
+              background-color: $green;
+              color: inherit;
+            }
+
+            &:hover {
+              background-color: $orange;
+
+              &::after {
+                background-color: $orange;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.multiselect--active {
+    > .multiselect__tags {
+      border-color: $primary;
+      background-color: $input-bg;
+      border-bottom-color: rgba(255, 255, 255, 0);
+      @include box-shadow(none);
+    }
+  }
+}

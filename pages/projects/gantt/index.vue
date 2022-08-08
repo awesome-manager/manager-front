@@ -10,16 +10,15 @@
             </nuxt-link>
           </div>
         </div>
-        <Timeline :data="preparedProjects" />
+        <Timeline :data="preparedProjects" v-if="projects.length > 0"/>
       </g-card>
     </div>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 import find from 'lodash/find';
-import fetchSilence from '@/src/tools/safeRequest';
 import routerMixin from '@/src/mixins/routerMixin';
 
 import Timeline from 'vue-timeline-component';
@@ -27,9 +26,9 @@ import Timeline from 'vue-timeline-component';
 export default {
   'name': 'GanttPage',
   mixins: [routerMixin],
-  fetch({ store, error }) {
+  created() {
     if (this.projects === undefined || this.projects.length === 0) {
-      return fetchSilence(store, error, 'projects/loadGantPage');
+      this.loadGantPage();
     }
   },
   computed: {
@@ -45,6 +44,9 @@ export default {
         };
       });
     },
+  },
+  methods: {
+    ...mapActions('projects', ['loadGantPage'])
   },
   components: {
     Timeline
