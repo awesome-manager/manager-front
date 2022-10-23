@@ -1,15 +1,9 @@
-import request from './request';
+import PageEmployees from './page/employees';
+import pageVacations from './page/vacations';
+import pageProjects from './page/projects';
 
-class Api {
-  getEmployeesPage() {
-    return request.get('/ajax/page/employees/');
-  }
-
-  getVacationsPage() {
-    return request.get('/ajax/page/vacations/');
-  }
-}
-
-const api = new Api();
-
-export default api;
+export default {
+  ...PageEmployees,
+  ...pageVacations,
+  ...pageProjects
+};

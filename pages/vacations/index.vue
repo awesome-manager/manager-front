@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-12">
       <g-card>
-        <h4 slot="header" class="card-title">Отпуск</h4>
+        <h3 slot="header" class="card-title">Отпуск</h3>
         <Timeline :data="preparedVacations" />
       </g-card>
     </div>
@@ -25,7 +25,7 @@ export default {
     ...mapState('vacations', ['vacations', 'employees']),
     preparedVacations() {
       return this.vacations.map(vacation => {
-        let employee = find(this.employees, { id: vacation.employee_id })
+        let employee = find(this.employees, { id: vacation.employee_id });
 
         return {
           name: `${employee.name} ${employee.surname}`,

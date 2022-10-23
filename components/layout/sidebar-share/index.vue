@@ -23,39 +23,12 @@
         </li>
 
         <li class="header-title">Sidebar Mini</li>
-        <li class="adjustments-line">
+        <li class="adjustments-line mb-4">
           <div class="togglebutton switch-change-color mt-3">
             <span class="label-switch">LIGHT MODE</span>
             <g-switch v-model="darkMode" @input="toggleMode"></g-switch>
             <span class="label-switch label-right">DARK MODE</span>
           </div>
-        </li>
-
-        <li class="button-container mt-4">
-          <a
-            href="https://www.creative-tim.com/learning-lab/nuxt/overview/black-dashboard"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-default btn-block btn-round"
-          >
-            Documentation
-          </a>
-          <a
-            href="https://creative-tim.com/product/nuxt-black-dashboard"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-primary btn-block btn-round"
-          >
-            Download Now
-          </a>
-          <a
-            href="https://creative-tim.com/product/nuxt-black-dashboard-pro"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-info btn-block btn-round"
-          >
-            Upgrade to PRO
-          </a>
         </li>
       </ul>
     </div>

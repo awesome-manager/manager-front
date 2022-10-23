@@ -1,5 +1,8 @@
 <template>
-  <el-table :data="tableData">
+  <el-table
+    :data="tableData"
+    :row-class-name="rowClassName"
+  >
     <el-table-column
       v-for="column in tableColumns"
       :key="column.propertyName"
@@ -23,6 +26,10 @@ export default {
     tableColumns: {
       type: Array,
       default: [],
+    },
+    rowClassName: {
+      type: Function,
+      default: null
     }
   },
   components: {

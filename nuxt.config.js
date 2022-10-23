@@ -1,5 +1,4 @@
 export default {
-  mode: 'universal',
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -76,6 +75,7 @@ export default {
     lazy: true,
     langDir: 'lang/',
     defaultLocale: 'ru',
+    strategy: 'prefix_except_default'
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

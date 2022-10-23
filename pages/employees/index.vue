@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-12">
       <g-card card-body-classes="table-full-width">
-        <h4 slot="header" class="card-title">Сотрудники</h4>
+        <h3 slot="header" class="card-title">Сотрудники</h3>
         <g-table :table-data="employees" :table-columns="columns" />
       </g-card>
     </div>
