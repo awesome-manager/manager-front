@@ -118,9 +118,9 @@ export default {
     ...mapState('projects', ['projects', 'groups', 'customers', 'statuses', 'settings']),
     preparedProjects() {
       return this.projects.map(project => {
-        let group = find(this.groups, { id: project.group_id });
-        let customer = find(this.customers, { id: project.customer_id });
-        let status = find(this.statuses, { id: project.status_id });
+        let group = find(this.groups, { id: project.group_id }) || {};
+        let customer = find(this.customers, { id: project.customer_id }) || {};
+        let status = find(this.statuses, { id: project.status_id }) || {};
         let profit = project.budget * project.expected_profitability / 100;
         let balance = project.budget - profit;
 

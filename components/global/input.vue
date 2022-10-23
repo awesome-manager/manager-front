@@ -123,4 +123,13 @@ export default {
   }
 };
 </script>
-<style></style>
+<style lang="scss" scoped>
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+</style>

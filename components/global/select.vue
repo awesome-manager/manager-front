@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="form-group">
     <slot name="label">
       <label v-if="label"> {{ label }} {{ required ? '*' : '' }} </label>
     </slot>
@@ -12,7 +12,8 @@
       <slot>
         <multiselect
           :value="value"
-          :options="options"
+          :options="preparedOptions"
+          :placeholder="placeholder"
           v-on="listeners"
           class="based-multiselect"
           aria-describedby="addon-right addon-left"
@@ -34,6 +35,8 @@
   </div>
 </template>
 <script>
+import find from "lodash/find";
+
 import Multiselect from "vue-multiselect";
 
 export default {
@@ -47,13 +50,13 @@ export default {
       type: Boolean,
       default: false
     },
-    value: {
-      type: [String, Number],
-      default: null
+    placeholder: {
+      type: String,
+      default: 'Выберите вариант'
     },
     options: {
-      type: [Array, Object],
-      default: () => ([])
+      type: Array,
+      default: [],
     },
     searchable: {
       type: Boolean,
@@ -74,11 +77,15 @@ export default {
   },
   data() {
     return {
-      focused: false,
-      touched: false
-    };
+      value: null
+    }
   },
   computed: {
+    preparedOptions() {
+      return this.options.map(option => {
+        return typeof option === 'object' ? option.title : option
+      });
+    },
     hasIcon() {
       return this.hasLeftAddon || this.hasRightAddon
     },
@@ -99,26 +106,14 @@ export default {
     listeners() {
       return {
         ...this.$listeners,
-        input: this.onInput,
-        blur: this.onBlur,
-        focus: this.onFocus
+        input: this.onInput
       };
     }
   },
   methods: {
     onInput(val) {
-      if (!this.touched) {
-        this.touched = true;
-      }
-      this.$emit('input', val);
-    },
-    onFocus(evt) {
-      this.focused = true;
-      this.$emit('focus', evt)
-    },
-    onBlur(evt) {
-      this.focused = false;
-      this.$emit('blur', evt)
+      this.value = val;
+      this.$emit('input', this.options.includes(val) ? val : find(this.options, ['title', val]));
     }
   },
   components: {

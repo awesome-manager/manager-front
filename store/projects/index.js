@@ -1,6 +1,7 @@
 import api from '@/src/api';
 
 export const state = () => ({
+  groupCustomer: [],
   customers: [],
   projects: [],
   statuses: [],
@@ -58,5 +59,5 @@ export const actions = {
         }
       }
     });
-  }
+  },
 }

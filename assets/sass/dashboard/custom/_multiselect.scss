@@ -2,6 +2,7 @@
 
 .multiselect {
   > .multiselect__tags {
+    padding-top: 8px;
     border-color: lighten($black,5%);
     border-radius: $border-radius-lg;
     @include transition-input-focus-color();
@@ -17,6 +18,10 @@
       font-size: $font-size-sm;
       background-color: rgba(255, 255, 255, 0);
       color: rgba(255, 255, 255, 0.8);
+    }
+
+    > .multiselect__placeholder {
+      margin-bottom: 7px;
     }
   }
 
