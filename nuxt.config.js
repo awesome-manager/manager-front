@@ -24,7 +24,8 @@ export default {
     }
   },
   router: {
-    linkExactActiveClass: 'active'
+    linkExactActiveClass: 'active',
+    middleware: ['auth']
   },
 
   // Customize the progress-bar color
@@ -53,6 +54,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
+    '@nuxtjs/auth-next',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     'nuxt-i18n'
@@ -86,7 +88,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: [/^element-ui/],
+    transpile: [/^element-ui/, 'auth-next/dist'],
     /*
     ** You can extend webpack config here
     */
@@ -102,6 +104,46 @@ export default {
           }
         ]
       ]
+    }
+  },
+
+  // Auth module configuration: https://auth.nuxtjs.org/
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      home: '/'
+    },
+    fullPathRedirect: true,
+    strategies: {
+      local: {
+        scheme: 'refresh',
+        autoFetchUser: true,
+        token: {
+          property: 'content.access_token',
+          maxAge: 1440 // 1 day (24 * 60)
+        },
+        refreshToken: {
+          property: 'content.refresh_token',
+          maxAge: 43200 // 30 days (24 * 60 * 30)
+        },
+        user: {
+          property: 'content'
+        },
+        endpoints: {
+          login: {
+            url: '/ajax/idm/auth/login',
+            method: 'post',
+            propertyName: 'content.access_token',
+            refreshToken: 'content.refresh_token'
+          },
+          user: {
+            url: '/ajax/idm/auth/user',
+            method: 'get',
+            propertyName: 'content'
+          }
+        }
+      }
     }
   }
 }
