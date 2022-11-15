@@ -25,7 +25,7 @@
               </div>
               <div class="col-md-12">
                 <g-input
-                  type="text"
+                  type="password"
                   label="Пароль"
                   placeholder="Пароль"
                   v-model="form.password"
@@ -63,10 +63,7 @@ export default {
       formData.append('username', this.form.username);
       formData.append('password', this.form.password);
 
-      console.log(this);
-
-
-      let response = this.$auth.loginWith('local', { data: formData});
+      this.$auth.loginWith('local', { data: formData});
     }
   }
 }
