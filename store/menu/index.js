@@ -15,7 +15,6 @@ export const actions = {
     return api.getMenu().then(res => {
       if (res.data.error === 0) {
         if (res.data.content.menu !== 'undefined') {
-          console.log(res.data.content);
           commit('setMenuItems', res.data.content.menu);
         }
       }

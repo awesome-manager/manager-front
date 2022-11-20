@@ -6,7 +6,6 @@ export default function fetchSilence(store, error, action, param) {
         resolve(res);
       })
       .catch(e => {
-        console.log(e);
         if (e.response.status === 404) {
           error({ statusCode: 404 });
         } else {
