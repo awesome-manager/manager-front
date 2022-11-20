@@ -1,7 +1,7 @@
-import request from "@/src/api/request";
+import { get } from "@/src/api/factory";
 
 export default {
   getMenu() {
-    return request.get('/ajax/site/menu/');
+    return get('/ajax/site/menu/');
   },
 };

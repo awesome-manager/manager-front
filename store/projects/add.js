@@ -40,7 +40,7 @@ export const getters = {
 
 export const actions = {
   loadPage({ commit }) {
-    return api.getProjectsAddPage().then(res => {
+    return this.$axios(api.getProjectsAddPage()).then(res => {
       if (res.data.error === 0) {
         if (res.data.content.statuses !== 'undefined') {
           commit('setStatuses', res.data.content.statuses);

@@ -12,7 +12,7 @@ export const mutations = {
 
 export const actions = {
   loadMenu({ commit }) {
-    return api.getMenu().then(res => {
+    return this.$axios(api.getMenu()).then(res => {
       if (res.data.error === 0) {
         if (res.data.content.menu !== 'undefined') {
           commit('setMenuItems', res.data.content.menu);

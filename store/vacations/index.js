@@ -16,7 +16,7 @@ export const mutations = {
 
 export const actions = {
   loadPage({ commit }) {
-    return api.getVacationsPage().then(res => {
+    return this.$axios(api.getVacationsPage()).then(res => {
       if (res.data.error === 0) {
         if (res.data.content.vacations !== 'undefined') {
           commit('setVacations', res.data.content.vacations);

@@ -28,7 +28,7 @@ export const mutations = {
 
 export const actions = {
   loadPage({ commit }) {
-    return api.getProjectsPage().then(res => {
+    return this.$axios(api.getProjectsPage()).then(res => {
       if (res.data.error === 0) {
         if (res.data.content.customers !== 'undefined') {
           commit('setCustomers', res.data.content.customers);
@@ -46,7 +46,7 @@ export const actions = {
     });
   },
   loadGantPage({ commit }) {
-    return api.getProjectsGanttPage().then(res => {
+    return this.$axios(api.getProjectsGanttPage()).then(res => {
       if (res.data.error === 0) {
         if (res.data.content.projects !== 'undefined') {
           commit('setProjects', res.data.content.projects);

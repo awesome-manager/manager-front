@@ -271,7 +271,7 @@ export default {
 
       formData.append('is_active', +this.form.isActive);
 
-      api.addProject(formData).then(res => {
+      this.$axios(api.addProject(formData)).then(res => {
         if (res.data.content.success) {
           this.isSended = true;
         }

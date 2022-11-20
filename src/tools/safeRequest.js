@@ -6,10 +6,13 @@ export default function fetchSilence(store, error, action, param) {
         resolve(res);
       })
       .catch(e => {
-        if (e.response.status === 404) {
-          error({ statusCode: 404 });
-        } else {
-          error({ statusCode: 500 });
+        console.log('error: ', e);
+        if (e.response) {
+          if (e.response.status === 404) {
+            error({ statusCode: 404 });
+          } else {
+            error({ statusCode: 500 });
+          }
         }
         reject();
       });

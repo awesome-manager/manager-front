@@ -1,7 +1,7 @@
-import request from "@/src/api/request";
+import { get } from "@/src/api/factory";
 
 export default {
   getEmployeesPage() {
-    return request.get('/ajax/page/employees/');
+    return get('/ajax/page/employees/');
   }
 };

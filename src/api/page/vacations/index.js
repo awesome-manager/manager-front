@@ -1,7 +1,7 @@
-import request from "@/src/api/request";
+import { get } from "@/src/api/factory"
 
 export default {
   getVacationsPage() {
-    return request.get('/ajax/page/vacations/');
+    return get('/ajax/page/vacations/');
   }
 };

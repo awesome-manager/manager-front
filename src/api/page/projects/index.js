@@ -1,20 +1,20 @@
-import request from "@/src/api/request";
+import { get, post } from "@/src/api/factory";
 
 export default {
   getProjectsPage() {
-    return request.get('/ajax/page/projects/');
+    return get('/ajax/page/projects/');
   },
 
   getProjectsGanttPage() {
-    return request.get('/ajax/page/projects/gantt');
+    return get('/ajax/page/projects/gantt');
   },
 
   getProjectsAddPage() {
-    return request.get('/ajax/page/projects/add');
+    return get('/ajax/page/projects/add');
   },
 
   addProject(data) {
-    return request.post('/ajax/page/projects/add', data, {
+    return post('/ajax/page/projects/add', data, {
       'Content-Type': 'multipart/form-data',
     });
   }
