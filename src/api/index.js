@@ -1,9 +1,11 @@
-import PageEmployees from './page/employees';
+import pageEmployees from './page/employees';
 import pageVacations from './page/vacations';
 import pageProjects from './page/projects';
+import siteMenu from './site/menu';
 
 export default {
-  ...PageEmployees,
+  ...pageEmployees,
   ...pageVacations,
-  ...pageProjects
+  ...pageProjects,
+  ...siteMenu
 };

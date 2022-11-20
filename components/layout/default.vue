@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="{ 'nav-open': show }">
+  <div class="wrapper">
     <notifications></notifications>
     <side-bar
       :background-color="sidebarBackground"
@@ -7,35 +7,11 @@
       :title="$t('sidebar.title')"
     >
       <template slot-scope="props" slot="links">
-        <sidebar-item
+        <sidebar-item v-for="menuItem in menuItems"
           :link="{
-            name: $t('sidebar.dashboard'),
-            icon: 'tim-icons icon-chart-pie-36',
-            path: '/'
-          }"
-        >
-        </sidebar-item>
-        <sidebar-item
-          :link="{
-            name: $t('sidebar.projects'),
-            icon: 'tim-icons icon-laptop',
-            path: '/projects'
-          }"
-        >
-        </sidebar-item>
-        <sidebar-item
-          :link="{
-            name: $t('sidebar.employees'),
-            icon: 'tim-icons icon-single-02',
-            path: '/employees'
-          }"
-        >
-        </sidebar-item>
-        <sidebar-item
-          :link="{
-            name: $t('sidebar.vacations'),
-            icon: 'tim-icons icon-world',
-            path: '/vacations'
+            name: menuItem.title,
+            icon: `tim-icons ${menuItem.icon}`,
+            path: menuItem.link
           }"
         >
         </sidebar-item>
@@ -46,10 +22,7 @@
       <dashboard-navbar></dashboard-navbar>
       <router-view name="header"></router-view>
 
-      <div
-        :class="{ content: !isFullScreenRoute }"
-        @click="toggleSidebar"
-      >
+      <div class="content">
         <zoom-center-transition :duration="200" mode="out-in">
           <!-- your content here -->
           <slot></slot>
@@ -59,7 +32,7 @@
   </div>
 </template>
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import { SlideYDownTransition, ZoomCenterTransition } from 'vue2-transitions';
 
 import Sidebar from "@/components/layout/sidebar";
@@ -74,19 +47,14 @@ export default {
       sidebarBackground: 'vue' //vue|blue|orange|green|red|primary
     };
   },
+  created() {
+    this.loadMenu();
+  },
   computed: {
-    ...mapState('sidebar', ['show']),
-    isFullScreenRoute() {
-      return this.$route.path === '/maps/full-screen'
-    }
+    ...mapState('menu', ['menuItems']),
   },
   methods: {
-    ...mapMutations('sidebar', ['setShow']),
-    toggleSidebar() {
-      if (this.show) {
-        this.setShow(false);
-      }
-    },
+    ...mapActions('menu', ['loadMenu'])
   },
   components: {
     SlideYDownTransition,
