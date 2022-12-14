@@ -141,6 +141,10 @@ export default {
             url: '/ajax/idm/auth/user',
             method: 'get',
             propertyName: 'content'
+          },
+          logout: {
+            url: '/ajax/idm/auth/logout',
+            method: 'delete',
           }
         }
       }

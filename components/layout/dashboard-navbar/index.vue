@@ -20,7 +20,11 @@
     </div>
 
     <ul class="navbar-nav" :class="$rtl.isRTL ? 'mr-auto' : 'ml-auto'">
-      <div class="search-bar input-group" @click="searchModalVisible = true">
+      <div
+        v-if="showSearchButton"
+        class="search-bar input-group"
+        @click="searchModalVisible = true"
+      >
         <button
           class="btn btn-link"
           id="search-button"
@@ -48,6 +52,7 @@
         />
       </g-modal>
       <g-dropdown
+        v-if="showNotifications"
         tag="li"
         :menu-on-right="!$rtl.isRTL"
         title-tag="a"
@@ -83,7 +88,6 @@
       </g-dropdown>
       <g-dropdown
         tag="li"
-        :menu-on-right="!$rtl.isRTL"
         title-tag="a"
         class="nav-item"
         title-classes="nav-link"
@@ -99,12 +103,9 @@
         <li class="nav-link">
           <a href="#" class="nav-item dropdown-item">Profile</a>
         </li>
-        <li class="nav-link">
-          <a href="#" class="nav-item dropdown-item">Settings</a>
-        </li>
         <div class="dropdown-divider"></div>
         <li class="nav-link">
-          <a href="#" class="nav-item dropdown-item">Log out</a>
+          <a class="nav-item dropdown-item" @click="logout">Log out</a>
         </li>
       </g-dropdown>
     </ul>
@@ -117,6 +118,16 @@ import { CollapseTransition } from 'vue2-transitions';
 import BaseNav from '@/components/shared/navbar/base-nav';
 
 export default {
+  props: {
+    showSearchButton: {
+      type: Boolean,
+      default: true,
+    },
+    showNotifications: {
+      type: Boolean,
+      default: true,
+    }
+  },
   data() {
     return {
       activeNotifications: false,
@@ -155,7 +166,10 @@ export default {
     },
     toggleMenu() {
       this.showMenu = !this.showMenu;
-    }
+    },
+    logout() {
+      this.$auth.logout();
+    },
   },
   components: {
     CollapseTransition,
