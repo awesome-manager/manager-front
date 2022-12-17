@@ -2,6 +2,10 @@ import Vue from 'vue';
 import camelCase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
 import { Input, InputNumber, Tooltip, Popover } from 'element-ui';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUpload, faTrash } from '@fortawesome/free-solid-svg-icons';
+// import { faHatWizard } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 const requireComponent = require.context(
   // The relative path of the components folder
@@ -42,3 +46,5 @@ Vue.component(Input.name, Input);
 Vue.component(InputNumber.name, InputNumber);
 Vue.use(Tooltip);
 Vue.use(Popover);
+library.add(faUpload, faTrash);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
