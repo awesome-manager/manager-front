@@ -7,7 +7,8 @@
       :title="$t('sidebar.title')"
     >
       <template slot-scope="props" slot="links">
-        <sidebar-item v-for="menuItem in menuItems"
+        <sidebar-item v-for="(menuItem, index) in menuItems"
+          :key="index"
           :link="{
             name: menuItem.title,
             icon: `tim-icons ${menuItem.icon}`,

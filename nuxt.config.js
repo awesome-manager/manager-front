@@ -3,7 +3,8 @@ export default {
   ssr: false,
 
   env: {
-    api_url: process.env.API_URL
+    api_url: process.env.API_URL,
+    static_api_url: process.env.STATIC_API_URL
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
