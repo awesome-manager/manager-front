@@ -11,7 +11,7 @@ export default {
     },
     userImage() {
       if (this.hasImage) {
-        return this.generateFilePath(this.$auth.user.image);
+        return this.generateFilePath(this.$auth.user.image + '?' + new Date().getTime());
       }
 
       return '/img/user.png';

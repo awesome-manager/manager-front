@@ -7,12 +7,19 @@
       <div class="block block-four"></div>
       <img class="avatar" :src="userImage" alt="User Image" />
       <div>
-        <font-awesome-icon icon="fa-solid fa-upload" @click="uploadImage()" />
+        <font-awesome-icon icon="fa-solid fa-upload" class="hover" @click="openUpload" />
+        <input
+          ref="fileUploader"
+          type="file"
+          accept="image/jpeg, image/png"
+          class="hidden"
+          @change="uploadImage"
+        >
         <font-awesome-icon
           v-if="hasImage"
           icon="fa-solid fa-trash"
           class="hover"
-          @click="deleteImage()"
+          @click="deleteImage"
         />
       </div>
       <h5 class="title"> {{ userName }} {{ userSurname }}</h5>
@@ -29,15 +36,31 @@ import userMixin from "@/src/mixins/userMixin";
 export default {
   mixins: [staticUrlMixin, userMixin],
   methods: {
-    uploadImage() {
+    openUpload() {
+      this.$refs.fileUploader.click();
+    },
+    uploadImage(e) {
+      if (e.target.files.length === 0) {
+        return;
+      }
 
+      let formData = new FormData();
+
+      formData.append('image', e.target.files[0]);
+
+      this.$axios(api.createUserImage(formData)).then(response => {
+        this.refreshUserData(response);
+      });
     },
     deleteImage() {
       this.$axios(api.deleteUserImage()).then(response => {
-        if (typeof response.data.content.success !== undefined && response.data.content.success) {
-          this.$auth.fetchUser();
-        }
+        this.refreshUserData(response);
       });
+    },
+    refreshUserData(response) {
+      if (typeof response.data.content.success !== undefined && response.data.content.success) {
+        this.$auth.fetchUser();
+      }
     }
   }
 }
@@ -45,5 +68,8 @@ export default {
 <style lang="scss" scoped>
 .hover:hover {
   cursor: pointer;
+}
+.hidden {
+  display: none;
 }
 </style>

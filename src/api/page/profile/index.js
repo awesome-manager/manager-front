@@ -6,6 +6,9 @@ export default {
       'Content-Type': 'multipart/form-data',
     });
   },
+  createUserImage(data) {
+    return post('/ajax/page/profile/image', data);
+  },
   deleteUserImage() {
     return del('/ajax/page/profile/image');
   }
