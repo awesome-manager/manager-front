@@ -3,7 +3,7 @@
     <div class="col-lg-12">
       <g-card card-body-classes="table-full-width">
         <h3 slot="header" class="card-title">Сотрудники</h3>
-        <g-table :table-data="employees" :table-columns="columns" />
+        <g-table :table-data="preparedEmployees" :table-columns="columns" />
       </g-card>
     </div>
   </div>
@@ -11,6 +11,7 @@
 <script>
 import { mapState } from 'vuex';
 
+import find from 'lodash/find';
 import fetchSilence from '@/src/tools/safeRequest';
 
 export default {
@@ -37,13 +38,13 @@ export default {
           minWidth: 150,
           sortable: true,
           label: 'Должность',
-          propertyName: 'position.title'
+          propertyName: 'position'
         },
         {
           minWidth: 150,
           sortable: true,
           label: 'Уровень',
-          propertyName: 'grade.title'
+          propertyName: 'grade'
         },
         {
           minWidth: 150,
@@ -61,10 +62,23 @@ export default {
     };
   },
   computed: {
-    ...mapState('employees', ['employees'])
+    ...mapState('employees', ['employees', 'grades', 'positions']),
+    preparedEmployees() {
+      return this.employees.map(employee => {
+        let grade = find(this.grades, {id: employee.grade_id}) || {};
+        let position = find(this.positions, {id: employee.position_id}) || {};
+        let employmentAt = employee.employment_at ? new Date(employee.employment_at).toDateString() : '';
+        let probation = employee.probation ? new Date(employee.probation).toDateString() : '';
+
+        return {
+          ...employee,
+          grade: grade.title,
+          position: position.title,
+          employment_at: employmentAt,
+          probation: probation
+        };
+      });
+    }
   }
 }
 </script>
-<style lang="scss" scoped>
-
-</style>
