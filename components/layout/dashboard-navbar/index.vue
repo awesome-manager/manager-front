@@ -20,7 +20,11 @@
     </div>
 
     <ul class="navbar-nav" :class="$rtl.isRTL ? 'mr-auto' : 'ml-auto'">
-      <div class="search-bar input-group" @click="searchModalVisible = true">
+      <div
+        v-if="showSearchButton"
+        class="search-bar input-group"
+        @click="searchModalVisible = true"
+      >
         <button
           class="btn btn-link"
           id="search-button"
@@ -48,6 +52,7 @@
         />
       </g-modal>
       <g-dropdown
+        v-if="showNotifications"
         tag="li"
         :menu-on-right="!$rtl.isRTL"
         title-tag="a"
@@ -83,7 +88,6 @@
       </g-dropdown>
       <g-dropdown
         tag="li"
-        :menu-on-right="!$rtl.isRTL"
         title-tag="a"
         class="nav-item"
         title-classes="nav-link"
@@ -92,19 +96,21 @@
         <template
           slot="title"
         >
-          <div class="photo"><img src="img/mike.jpg" /></div>
+          <div class="photo"><img :src="userImage" /></div>
           <b class="caret d-none d-lg-block d-xl-block"></b>
           <p class="d-lg-none">Log out</p>
         </template>
         <li class="nav-link">
-          <a href="#" class="nav-item dropdown-item">Profile</a>
-        </li>
-        <li class="nav-link">
-          <a href="#" class="nav-item dropdown-item">Settings</a>
+          <nuxt-link
+            class="nav-item dropdown-item"
+            :to="{ name: i18nLink('profile')}"
+          >
+            Профиль
+          </nuxt-link>
         </li>
         <div class="dropdown-divider"></div>
         <li class="nav-link">
-          <a href="#" class="nav-item dropdown-item">Log out</a>
+          <a class="nav-item dropdown-item" @click="logout">Выйти</a>
         </li>
       </g-dropdown>
     </ul>
@@ -114,9 +120,24 @@
 import { mapState, mapMutations } from 'vuex';
 import { CollapseTransition } from 'vue2-transitions';
 
+import routerMixin from "@/src/mixins/routerMixin";
+import staticUrlMixin from "@/src/mixins/staticUrlMixin";
+import userMixin from "@/src/mixins/userMixin";
+
 import BaseNav from '@/components/shared/navbar/base-nav';
 
 export default {
+  mixins: [routerMixin, staticUrlMixin, userMixin],
+  props: {
+    showSearchButton: {
+      type: Boolean,
+      default: true,
+    },
+    showNotifications: {
+      type: Boolean,
+      default: true,
+    }
+  },
   data() {
     return {
       activeNotifications: false,
@@ -155,7 +176,10 @@ export default {
     },
     toggleMenu() {
       this.showMenu = !this.showMenu;
-    }
+    },
+    logout() {
+      this.$auth.logout();
+    },
   },
   components: {
     CollapseTransition,

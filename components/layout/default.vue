@@ -7,7 +7,8 @@
       :title="$t('sidebar.title')"
     >
       <template slot-scope="props" slot="links">
-        <sidebar-item v-for="menuItem in menuItems"
+        <sidebar-item v-for="(menuItem, index) in menuItems"
+          :key="index"
           :link="{
             name: menuItem.title,
             icon: `tim-icons ${menuItem.icon}`,
@@ -17,9 +18,11 @@
         </sidebar-item>
       </template>
     </side-bar>
-    <sidebar-share :background-color.sync="sidebarBackground"> </sidebar-share>
     <div class="main-panel" :data="sidebarBackground">
-      <dashboard-navbar></dashboard-navbar>
+      <dashboard-navbar
+        :show-notifications="false"
+        :show-search-button="false"
+      ></dashboard-navbar>
       <router-view name="header"></router-view>
 
       <div class="content">
